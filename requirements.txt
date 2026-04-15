@@ -1,0 +1,8 @@
+numpy==1.26.4
+pillow==10.3.0
+matplotlib==3.8.4
+scikit-learn==1.4.2
+tensorflow==2.16.1
+flask==3.0.3
+SQLAlchemy==2.0.29
+Flask-SQLAlchemy==3.1.1
