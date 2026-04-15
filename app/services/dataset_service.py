@@ -1,5 +1,5 @@
-from db import db, Dataset
-
+from app.extensions.db import db
+from app.models.dataset import Dataset
 
 class DatasetService:
 
