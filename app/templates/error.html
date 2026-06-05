@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: radial-gradient(circle at top, #1e293b, #0f172a);
+            color: white;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 18px;
+            text-align: center;
+            max-width: 500px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            animation: fade 0.6s ease;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            color: #f87171;
+        }
+
+        p {
+            color: #cbd5e1;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 18px;
+            background: linear-gradient(90deg, #3b82f6, #06b6d4);
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h1>Something went wrong</h1>
+
+    <p>
+        {{ msg }}
+    </p>
+
+    <a class="btn" href="/">← Back to Dashboard</a>
+
+</div>
+
+</body>
+</html>

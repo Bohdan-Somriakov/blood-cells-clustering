@@ -1,7 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cluster Distribution</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: radial-gradient(circle at top, #1e293b, #0f172a);
+    color: white;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border-radius: 18px;
+    padding: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+    animation: fade 0.8s ease;
+}
+
+@keyframes fade {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
+
+h1 {
+    font-size: 32px;
+}
+
+p {
+    color: #cbd5e1;
+}
+
+img {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 14px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    transition: 0.4s;
+}
+
+img:hover {
+    transform: scale(1.01);
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #38bdf8;
+    color: black;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
 <h1>Cluster Distribution</h1>
-<p>This chart shows how real image classes are distributed across clusters.</p>
 
-<img src="{{ image }}" style="width:100%; border-radius:12px;">
+<p>
+Distribution of real image classes across KMeans clusters after CNN feature extraction.
+</p>
 
-<br><br>
-<a href="/">Back</a>
+<img src="{{ image }}">
+
+<a class="btn" href="/">← Back</a>
+
+</div>
+
+</div>
+
+</body>
+</html>

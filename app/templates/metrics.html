@@ -1,61 +1,108 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Metrics</title>
+<title>Metrics Dashboard</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #f6f8fb;
-            padding: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
 
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-        }
+/* container */
+.wrapper {
+    max-width: 1000px;
+    margin: auto;
+    padding: 50px 20px;
+    animation: fade 0.8s ease;
+}
 
-        .metric {
-            padding: 12px;
-            margin: 10px 0;
-            background: #f1f4f8;
-            border-radius: 10px;
-            font-size: 18px;
-        }
+@keyframes fade {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
 
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 14px;
-            background: #4a90e2;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-    </style>
+/* header */
+h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+}
+
+.sub {
+    color: #94a3b8;
+    margin-bottom: 30px;
+}
+
+/* metric cards */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(12px);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+    background: rgba(255,255,255,0.08);
+}
+
+/* metric value */
+.value {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* buttons */
+.btn {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 18px;
+    background: #3b82f6;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
+<div class="wrapper">
 
-    <h2>Clustering Metrics</h2>
+<h1>Clustering Metrics</h1>
+<p class="sub">
+Evaluation of clustering quality using statistical and distance-based measures.
+</p>
 
-    <p>
-        Evaluation of clustering quality using Silhouette score, Calinski-Harabasz index,
-        and Davies-Bouldin index.
-    </p>
+<div class="grid">
 
-    {% for key, value in metrics.items() %}
-        <div class="metric">
-            <b>{{ key }}:</b> {{ value }}
-        </div>
-    {% endfor %}
+{% for key, value in metrics.items() %}
+<div class="card">
+    <div>{{ key }}</div>
+    <div class="value">{{ value }}</div>
+</div>
+{% endfor %}
 
-    <a href="/">← Back</a>
+</div>
+
+<a class="btn" href="/">← Back to Dashboard</a>
 
 </div>
 

@@ -1,57 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Clusters</title>
+<title>Clusters View</title>
 
-    <style>
-        body {
-            font-family: Arial;
-            background: #f6f8fb;
-            padding: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: linear-gradient(120deg, #0f172a, #111827);
+    color: white;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-        }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 50px;
+}
 
-        img {
-            width: 100%;
-            border-radius: 12px;
-            margin-top: 20px;
-        }
+.box {
+    background: rgba(255,255,255,0.05);
+    padding: 25px;
+    border-radius: 18px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.1);
+}
 
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 14px;
-            background: #4a90e2;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-        }
-    </style>
+img {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 14px;
+    transition: 0.3s;
+}
+
+img:hover {
+    transform: scale(1.01);
+}
+
+h1 {
+    font-size: 32px;
+}
+
+p {
+    color: #94a3b8;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 16px;
+    background: #6366f1;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h2>Image Clustering Result</h2>
+<div class="box">
 
-    <p>
-        This visualization shows KMeans clustering on CNN-extracted features.
-        PCA is used to reduce dimensionality to 2D for visualization.
-    </p>
+<h1>Image Clusters</h1>
 
-    <img src="{{ image }}" alt="Clusters Plot">
+<p>
+PCA-reduced visualization of CNN feature space clustered using KMeans.
+</p>
 
-    <br>
+<img src="{{ image }}">
 
-    <a href="/">← Return to Home</a>
+<br>
+
+<a href="/">← Back</a>
+
+</div>
 
 </div>
 

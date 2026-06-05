@@ -1,90 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Compare Results</title>
+<title>Cluster Comparison</title>
 
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f6f8fb;
-            margin: 0;
-            padding: 40px;
-        }
+<style>
+body {
+    margin: 0;
+    font-family: Arial;
+    background: radial-gradient(circle, #111827, #0f172a);
+    color: white;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            background: white;
-            padding: 25px;
-            border-radius: 14px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-            animation: fade 0.6s ease-in;
-        }
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 60px 20px;
+}
 
-        @keyframes fade {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.card {
+    background: rgba(255,255,255,0.05);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(12px);
+    animation: fade 0.8s ease;
+}
 
-        h1 {
-            margin-bottom: 10px;
-        }
+@keyframes fade {
+    from {opacity:0; transform: translateY(20px);}
+    to {opacity:1; transform: translateY(0);}
+}
 
-        p {
-            color: #444;
-            line-height: 1.6;
-        }
+h1 {
+    font-size: 34px;
+}
 
-        img {
-            width: 100%;
-            margin-top: 20px;
-            border-radius: 12px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
-        }
+p {
+    color: #cbd5e1;
+    line-height: 1.6;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 16px;
-            background: #4a90e2;
-            color: white;
-            text-decoration: none;
-            border-radius: 8px;
-            transition: 0.2s;
-        }
+img {
+    width: 100%;
+    margin-top: 25px;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    transition: 0.3s;
+}
 
-        .btn:hover {
-            transform: translateY(-2px);
-            background: #357ABD;
-        }
+img:hover {
+    transform: scale(1.02);
+}
 
-        .note {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+.btn {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 12px 18px;
+    background: linear-gradient(90deg, #06b6d4, #3b82f6);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+}
+</style>
 </head>
 
 <body>
 
 <div class="container">
 
-    <h1>Cluster Comparison</h1>
+<div class="card">
 
-    <p>
-        This visualization compares clustering results with original class labels.
-        It helps analyze how well the KMeans algorithm separates different image categories
-        after feature extraction using MobileNetV2 and dimensionality reduction with PCA.
-    </p>
+<h1>Cluster Comparison</h1>
 
-    <img src="{{ image }}" alt="Comparison Plot">
+<p>
+Comparison between real labels and KMeans clustering results after MobileNetV2 feature extraction and PCA reduction.
+</p>
 
-    <p class="note">
-        Tip: Clear separation between colors indicates better clustering quality.
-    </p>
+<img src="{{ image }}">
 
-    <a href="/" class="btn">← Return to Dashboard</a>
+<a class="btn" href="/">← Return Home</a>
+
+</div>
 
 </div>
 
