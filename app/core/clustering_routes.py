@@ -1,7 +1,7 @@
 import os
 import numpy as np
 import matplotlib
-matplotlib.use("Agg")  # IMPORTANT for Flask (no GUI backend)
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -89,25 +89,30 @@ class Plotter:
     @staticmethod
     def distribution(labels, filenames):
         classes = np.array([os.path.basename(os.path.dirname(f)) for f in filenames])
+
         uniq_c = np.unique(classes)
         uniq_k = np.unique(labels)
 
         dist = np.zeros((len(uniq_k), len(uniq_c)))
-
         c_map = {c: i for i, c in enumerate(uniq_c)}
 
         for l, c in zip(labels, classes):
-            dist[np.where(uniq_k == l)[0][0], c_map[c]] += 1
+            cluster_idx = np.where(uniq_k == l)[0][0]
+            class_idx = c_map[c]
+            dist[cluster_idx, class_idx] += 1
+
+        fig, ax = plt.subplots(figsize=(10, 6))
 
         bottom = np.zeros(len(uniq_k))
 
-        plt.figure(figsize=(10, 6))
         for i, c in enumerate(uniq_c):
-            plt.bar(uniq_k, dist[:, i], bottom=bottom, label=c)
+            ax.bar(uniq_k, dist[:, i], bottom=bottom, label=c)
             bottom += dist[:, i]
 
-        plt.title("Cluster Distribution")
-        plt.legend()
+        ax.set_title("Cluster Distribution")
+        ax.legend()
+
+        return fig
 
     @staticmethod
     def pca_compare(features_2d, labels, filenames):

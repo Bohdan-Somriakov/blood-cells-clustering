@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, request, send_file, jsonify
+from flask import Blueprint, request, send_file, jsonify, render_template
 
 import matplotlib
 matplotlib.use("Agg")
@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 from app.services.dataset_service import DatasetService
 from app.core.clustering_routes import ClusteringPipeline, ClusterMetrics, Plotter
+
 
 bp = Blueprint("clustering", __name__)
 
@@ -47,9 +48,14 @@ def run():
 @bp.route("/metrics")
 def metrics():
     if "f" not in STATE:
-        return {"error": "Run clustering first"}, 400
+        return render_template("error.html", msg="Run clustering first")
 
-    return jsonify(ClusterMetrics.compute(STATE["f"], STATE["l"]))
+    metrics = ClusterMetrics.compute(STATE["f"], STATE["l"])
+
+    return render_template(
+        "metrics.html",
+        metrics=metrics
+    )
 
 
 # -------------------- PCA --------------------
@@ -71,41 +77,54 @@ def pca():
 @bp.route("/clusters")
 def clusters():
     if "f" not in STATE:
-        return {"error": "Run clustering first"}, 400
+        return render_template("error.html", msg="Run clustering first")
 
     path = os.path.join(PLOT_DIR, "clusters.png")
 
     f2d = Plotter.pca_2d(STATE["f"])
     Plotter.clusters_plot(f2d, STATE["l"])
-    save(path)
 
-    return send_file(path, mimetype="image/png")
+    plt.savefig(path)
+    plt.close()
+
+    return render_template(
+        "clusters.html",
+        image="/static/plots/clusters.png"
+    )
 
 
 # -------------------- DISTRIBUTION --------------------
 @bp.route("/distribution")
 def distribution():
     if "f" not in STATE:
-        return {"error": "Run clustering first"}, 400
+        return render_template("error.html", msg="Run clustering first")
 
     path = os.path.join(PLOT_DIR, "dist.png")
 
-    Plotter.distribution(STATE["l"], STATE["files"])
-    save(path)
+    fig = Plotter.distribution(STATE["l"], STATE["files"])
 
-    return send_file(path, mimetype="image/png")
+    fig.savefig(path)
+    plt.close(fig)
 
+    return render_template(
+        "distribution.html",
+        image="/static/plots/dist.png"
+    )
 
 # -------------------- COMPARE --------------------
 @bp.route("/compare")
 def compare():
     if "f" not in STATE:
-        return {"error": "Run clustering first"}, 400
-
-    path = os.path.join(PLOT_DIR, "compare.png")
+        return render_template("error.html", msg="Run clustering first")
 
     f2d = Plotter.pca_2d(STATE["f"])
-    Plotter.pca_compare(f2d, STATE["l"], STATE["files"])
-    save(path)
 
-    return send_file(path, mimetype="image/png")
+    fig = Plotter.pca_compare(f2d, STATE["l"], STATE["files"])
+    path = os.path.join(PLOT_DIR, "compare.png")
+    fig.savefig(path)
+    plt.close(fig)
+
+    return render_template(
+        "compare.html",
+        image="/static/plots/compare.png"
+    )

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Metrics</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f6f8fb;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+        }
+
+        .metric {
+            padding: 12px;
+            margin: 10px 0;
+            background: #f1f4f8;
+            border-radius: 10px;
+            font-size: 18px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 14px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Clustering Metrics</h2>
+
+    <p>
+        Evaluation of clustering quality using Silhouette score, Calinski-Harabasz index,
+        and Davies-Bouldin index.
+    </p>
+
+    {% for key, value in metrics.items() %}
+        <div class="metric">
+            <b>{{ key }}:</b> {{ value }}
+        </div>
+    {% endfor %}
+
+    <a href="/">← Back</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clusters</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f6f8fb;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 14px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Image Clustering Result</h2>
+
+    <p>
+        This visualization shows KMeans clustering on CNN-extracted features.
+        PCA is used to reduce dimensionality to 2D for visualization.
+    </p>
+
+    <img src="{{ image }}" alt="Clusters Plot">
+
+    <br>
+
+    <a href="/">← Return to Home</a>
+
+</div>
+
+</body>
+</html>

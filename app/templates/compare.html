@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compare Results</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f6f8fb;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            animation: fade 0.6s ease-in;
+        }
+
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #444;
+            line-height: 1.6;
+        }
+
+        img {
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 16px;
+            background: #4a90e2;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: #357ABD;
+        }
+
+        .note {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Cluster Comparison</h1>
+
+    <p>
+        This visualization compares clustering results with original class labels.
+        It helps analyze how well the KMeans algorithm separates different image categories
+        after feature extraction using MobileNetV2 and dimensionality reduction with PCA.
+    </p>
+
+    <img src="{{ image }}" alt="Comparison Plot">
+
+    <p class="note">
+        Tip: Clear separation between colors indicates better clustering quality.
+    </p>
+
+    <a href="/" class="btn">← Return to Dashboard</a>
+
+</div>
+
+</body>
+</html>

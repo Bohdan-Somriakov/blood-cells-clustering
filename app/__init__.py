@@ -1,8 +1,13 @@
 from flask import Flask
 from app.extensions.db import db
+import os
 
 def create_app():
-    app = Flask(__name__)
+    app = Flask(
+        __name__,
+        template_folder=os.path.join(os.path.dirname(__file__), "templates"),
+        static_folder=os.path.join(os.path.dirname(__file__), "static")
+    )
 
     app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///datasets.db"
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
